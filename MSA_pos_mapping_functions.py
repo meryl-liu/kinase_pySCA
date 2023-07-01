@@ -35,7 +35,7 @@ def msa_pos_mapping(full_seq, sub_seq, cutoff=4):
             continue
         # mappings.append(full_seq_pos)
         tentative_mappings = [] # List to hold the most recent continuous pos mappings.
-        tentative_mappings.append(full_seq_pos)
+        #tentative_mappings.append(full_seq_pos)
         while (
             full_seq_pos < len(full_seq)
             and sub_seq_pos < len(sub_seq)
