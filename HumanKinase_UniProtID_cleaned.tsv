@@ -120,7 +120,6 @@ From	Entry	Reviewed	Entry Name	Protein names	Gene Names	Organism	Length
 3183518	Q05397	reviewed	FAK1_HUMAN	Focal adhesion kinase 1 (FADK 1) (EC 2.7.10.2) (Focal adhesion kinase-related nonkinase) (FRNK) (Protein phosphatase 1 regulatory subunit 71) (PPP1R71) (Protein-tyrosine kinase 2) (p125FAK) (pp125FAK)	PTK2 FAK FAK1	Homo sapiens (Human)	1052
 1507672	Q92519	reviewed	TRIB2_HUMAN	Tribbles homolog 2 (TRB-2)	TRIB2 TRB2	Homo sapiens (Human)	343
 6225242	O15075	reviewed	DCLK1_HUMAN	Serine/threonine-protein kinase DCLK1 (EC 2.7.11.1) (Doublecortin domain-containing protein 3A) (Doublecortin-like and CAM kinase-like 1) (Doublecortin-like kinase 1)	DCLK1 DCAMKL1 DCDC3A KIAA0369	Homo sapiens (Human)	740
-7242949	Q15772	reviewed	SPEG_HUMAN	Striated muscle preferentially expressed protein kinase (EC 2.7.11.1) (Aortic preferentially expressed protein 1) (APEG-1)	SPEG APEG1 KIAA1297	Homo sapiens (Human)	3267
 14041892	O60285	reviewed	NUAK1_HUMAN	NUAK family SNF1-like kinase 1 (EC 2.7.11.1) (AMPK-related protein kinase 5) (ARK5) (Omphalocele kinase 1)	NUAK1 ARK5 KIAA0537 OMPHK1	Homo sapiens (Human)	661
 14346040	Q96QS6	reviewed	KPSH2_HUMAN	Serine/threonine-protein kinase H2 (EC 2.7.11.1) (Protein serine kinase H2) (PSK-H2)	PSKH2	Homo sapiens (Human)	385
 16511401	Q8N165	reviewed	PDK1L_HUMAN	Serine/threonine-protein kinase PDIK1L (EC 2.7.11.1) (PDLIM1-interacting kinase 1-like)	PDIK1L CLIK1L	Homo sapiens (Human)	341
@@ -137,7 +136,6 @@ From	Entry	Reviewed	Entry Name	Protein names	Gene Names	Organism	Length
 16755792	Q96NX5	reviewed	KCC1G_HUMAN	Calcium/calmodulin-dependent protein kinase type 1G (EC 2.7.11.17) (CaM kinase I gamma) (CaM kinase IG) (CaM-KI gamma) (CaMKI gamma) (CaMKIG) (CaMK-like CREB kinase III) (CLICK III)	CAMK1G CLICK3 VWS1	Homo sapiens (Human)	476
 1276901	Q13464	reviewed	ROCK1_HUMAN	Rho-associated protein kinase 1 (EC 2.7.11.1) (Renal carcinoma antigen NY-REN-35) (Rho-associated, coiled-coil-containing protein kinase 1) (Rho-associated, coiled-coil-containing protein kinase I) (ROCK-I) (p160 ROCK-1) (p160ROCK)	ROCK1	Homo sapiens (Human)	1354
 1695873	Q5VT25	reviewed	MRCKA_HUMAN	Serine/threonine-protein kinase MRCK alpha (EC 2.7.11.1) (CDC42-binding protein kinase alpha) (DMPK-like alpha) (Myotonic dystrophy kinase-related CDC42-binding kinase alpha) (MRCK alpha) (Myotonic dystrophy protein kinase-like alpha)	CDC42BPA KIAA0451	Homo sapiens (Human)	1732
-5006445	Q9Y5S2	reviewed	MRCKB_HUMAN	Serine/threonine-protein kinase MRCK beta (EC 2.7.11.1) (CDC42-binding protein kinase beta) (CDC42BP-beta) (DMPK-like beta) (Myotonic dystrophy kinase-related CDC42-binding kinase beta) (MRCK beta) (Myotonic dystrophy protein kinase-like beta)	CDC42BPB KIAA1124	Homo sapiens (Human)	1711
 3115220	P22612	reviewed	KAPCG_HUMAN	cAMP-dependent protein kinase catalytic subunit gamma (PKA C-gamma) (EC 2.7.11.11)	PRKACG	Homo sapiens (Human)	351
 20072860	Q9NRP7	reviewed	STK36_HUMAN	Serine/threonine-protein kinase 36 (EC 2.7.11.1) (Fused homolog)	STK36 KIAA1278	Homo sapiens (Human)	1315
 23881	P28482	reviewed	MK01_HUMAN	Mitogen-activated protein kinase 1 (MAP kinase 1) (MAPK 1) (EC 2.7.11.24) (ERT1) (Extracellular signal-regulated kinase 2) (ERK-2) (MAP kinase isoform p42) (p42-MAPK) (Mitogen-activated protein kinase 2) (MAP kinase 2) (MAPK 2)	MAPK1 ERK2 PRKM1 PRKM2	Homo sapiens (Human)	360
@@ -149,7 +147,6 @@ From	Entry	Reviewed	Entry Name	Protein names	Gene Names	Organism	Length
 15620825	Q96Q04	reviewed	LMTK3_HUMAN	Serine/threonine-protein kinase LMTK3 (EC 2.7.11.1) (Lemur tyrosine kinase 3)	LMTK3 KIAA1883 TYKLM3	Homo sapiens (Human)	1460
 6009759	Q9HC98	reviewed	NEK6_HUMAN	Serine/threonine-protein kinase Nek6 (EC 2.7.11.34) (Never in mitosis A-related kinase 6) (NimA-related protein kinase 6) (Protein kinase SID6-1512)	NEK6	Homo sapiens (Human)	313
 3560543	Q9UIK4	reviewed	DAPK2_HUMAN	Death-associated protein kinase 2 (DAP kinase 2) (EC 2.7.11.1) (DAP-kinase-related protein 1) (DRP-1)	DAPK2	Homo sapiens (Human)	370
-3644048	O75962	reviewed	TRIO_HUMAN	Triple functional domain protein (EC 2.7.11.1) (PTPRF-interacting protein)	TRIO	Homo sapiens (Human)	3097
 682745	P49840	reviewed	GSK3A_HUMAN	Glycogen synthase kinase-3 alpha (GSK-3 alpha) (EC 2.7.11.26) (Serine/threonine-protein kinase GSK3A) (EC 2.7.11.1)	GSK3A	Homo sapiens (Human)	483
 12652981	P49841	reviewed	GSK3B_HUMAN	Glycogen synthase kinase-3 beta (GSK-3 beta) (EC 2.7.11.26) (Serine/threonine-protein kinase GSK3B) (EC 2.7.11.1)	GSK3B	Homo sapiens (Human)	420
 14017927	Q5TCY1	reviewed	TTBK1_HUMAN	Tau-tubulin kinase 1 (EC 2.7.11.1) (Brain-derived tau kinase)	TTBK1 BDTK KIAA1855	Homo sapiens (Human)	1321

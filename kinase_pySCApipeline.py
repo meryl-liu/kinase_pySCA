@@ -154,8 +154,13 @@ def cleanUpUniProtMappings(tsv_file):
     df = pd.read_table(tsv_file)
     df = df.drop_duplicates(subset="Entry", keep=False)  # Remove rows with duplicates (including the original row)
     df = df.drop_duplicates(subset="From", keep='first')  # Remove duplicate rows based on the specified column
+    df = df[df["Entry"] != "O00238"]  # Filter out rows with the specified value in the column
+    df = df[df["Entry"] != "P53778"]  # Filter out rows with the specified value in the column
+    df = df[df["Entry"] != "Q15772"]  # removed because no pdb file for this protein exists in the folder
+    df = df[df["Entry"] != "O75962"]  # removed because no pdb file exists in folder
+    df = df[df["Entry"] != "Q9Y5S2"]  # Removed for crashing surfDE file
+    df = df[df["Reviewed"] != "unreviewed"]  # Filter out rows with the specified value in the column
     df.to_csv("HumanKinase_UniProtID_cleaned.tsv", sep='\t', index=False, quoting=csv.QUOTE_NONE)  # Save the modified DataFrame back to the CSV file
-
 
 def generateSurfaceDECSV(dict):
     csv = [];
@@ -166,6 +171,41 @@ def generateSurfaceDECSV(dict):
             csv.append(csv_row)
         
     write_rows_to_csv("surfaceDE_input.csv", csv)
+
+def generatePosFiles(dict, alignment):
+    counter = 0;
+    importlib.reload(MSA_pos_mapping_functions)
+    for key, value in dict.items():
+        if value.UniProt_ID != None:
+            counter +=1;
+            print(str(counter) + " " + value.UniProt_ID)
+            output_file = '../sca/output/Refpos/'+value.UniProt_ID+'.pos'
+            pos_mapping = MSA_pos_mapping_functions.msa_pos_mapping(MSA_pos_mapping_functions.get_sequence(value.UniProt_ID), MSA_pos_mapping_functions.get_MSA_seq(alignment, str(value.GI_number)))
+            with open(output_file, 'w') as f:
+                f.write(f"{pos_mapping}")
+
+def fetch_pdb_from_github(file_path):
+    raw_url = f"https://raw.githubusercontent.com/{file_path}"
+    response = r.get(raw_url)
+    if response.status_code == r.codes.ok:
+        pdb_content = response.text
+        return pdb_content
+    else:
+        print("Failed to fetch PDB file:", response.status_code)
+        return None
+     
+def getPDBFiles(dict):
+    counter = 0;
+    for key, value in dict.items():
+        if value.UniProt_ID != None:
+            counter+=1;
+            print(counter)
+            github_path = "meryl-liu/kinase_pySCA/main/pdb/"+value.UniProt_ID+".pdb"
+            pdb_file_content = fetch_pdb_from_github(github_path)
+            pdb_file_name = './pdbfiles/{}.pdb'.format(value.UniProt_ID)
+            with open(pdb_file_name,'w') as f:
+                f.write(pdb_file_content)
+            
     
 
 ''' 
@@ -181,3 +221,25 @@ appendUniProtIDs(kinase_dict, 'HumanKinase_UniProtID_cleaned.tsv') # .tsv comes 
 
 generateSurfaceDECSV(kinase_dict)
 
+# Test with hog1 
+'''
+print('hog1 test')
+print(MSA_pos_mapping_functions.msa_pos_mapping(MSA_pos_mapping_functions.get_sequence('O93982'), MSA_pos_mapping_functions.get_MSA_seq('masterAln.an', str(4239817))))
+#generatePosFiles(kinase_dict, 'masterAln.an')
+print('kss1 test')
+print(MSA_pos_mapping_functions.msa_pos_mapping(MSA_pos_mapping_functions.get_sequence('P14681'), MSA_pos_mapping_functions.get_MSA_seq('masterAln.an', str(125716))))
+#generatePosFiles(kinase_dict, 'masterAln.an')
+print('2pk9 test')
+print(MSA_pos_mapping_functions.msa_pos_mapping(MSA_pos_mapping_functions.get_sequence('P17157'), MSA_pos_mapping_functions.get_MSA_seq('masterAln.an', str(2347159))))
+#generatePosFiles(kinase_dict, 'masterAln.an')
+print('2b9h test')
+print(MSA_pos_mapping_functions.msa_pos_mapping(MSA_pos_mapping_functions.get_sequence('P16892'), MSA_pos_mapping_functions.get_MSA_seq('masterAln.an', str(417014))))
+#generatePosFiles(kinase_dict, 'masterAln.an')
+print('1Bi8 test')
+print(MSA_pos_mapping_functions.msa_pos_mapping(MSA_pos_mapping_functions.get_sequence('Q00534'), MSA_pos_mapping_functions.get_MSA_seq('masterAln.an', str(266423))))
+'''
+generatePosFiles(kinase_dict, 'masterAln.an')
+
+getPDBFiles(kinase_dict)
+
+''' Now, you would need to run the runCalcSurfPos.m file within Matlab, which is in the pdbfiles folder. NOTE TO SELF: Q15772 IS A FAKE FILE: NEEDS TO BE REMOVED'''
