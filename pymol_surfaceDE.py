@@ -30,14 +30,37 @@ def fetch_pdb_from_github(file_path):
 def pymol_surf_DE(pdb_file, chain_id, cutoff, protein_id):
     pymol.cmd.load(pdb_file, 'structure')
     sasa_dict = pymol.cmd.get_sasa_relative()
-    rel_sa_cutoff = 0.2
+    rel_sa_cutoff = cutoff
     chain_id = 'A'
     surface_residues = [int(x[-1]) for x, val in sasa_dict.items() if val > rel_sa_cutoff and x[2] == chain_id]
-    prot_seq = pymol.cmd.get_fastastr('structure and chain {}'.format(chain_id))
-    # prot_seq = pymol.cmd.get_fastastr(key='model_{}'.format(chain_id))
-    prot_seq = ''.join(prot_seq.split('\n')[1:])
-    #print(prot_seq)
-    surf_DE_list = [int(x) for x in surface_residues if prot_seq[x-1] in ['D', 'E']]
+
+    # Dictionary to map three-letter amino acid codes to single-letter codes
+    aa_dict = {
+        'ALA': 'A', 'CYS': 'C', 'ASP': 'D', 'GLU': 'E',
+        'PHE': 'F', 'GLY': 'G', 'HIS': 'H', 'ILE': 'I',
+        'LYS': 'K', 'LEU': 'L', 'MET': 'M', 'ASN': 'N',
+        'PRO': 'P', 'GLN': 'Q', 'ARG': 'R', 'SER': 'S',
+        'THR': 'T', 'VAL': 'V', 'TRP': 'W', 'TYR': 'Y',
+    }
+
+    # Containers for residues and indices
+    residues = []
+    indices = []
+
+    # Iterate over each residue in the structure
+    cmd.iterate('structure and chain {} and name CA'.format(chain_id), 'residues.append(resn); indices.append(resi)', space=locals())
+
+    # Convert three-letter codes to single-letter codes
+    residues = [aa_dict[res] for res in residues]
+
+    # Convert indices to numbers
+    indices = [int(x) for x in indices]
+    
+    # Join residues into a string
+    prot_seq = ''.join(residues)
+
+    # look up the indices in `indices` to check for residue identity to D/E
+    surf_DE_list = [int(x) for x in surface_residues if prot_seq[indices.index(x)] in ['D', 'E']]
     with open(os.path.join(output_path, '{}_SurfDE.txt'.format(protein_id)), 'w') as f:
         f.write(','.join(map(str, surf_DE_list)))
 
